@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_ecommerce_app/components/AppSingUp.dart';
+import 'package:http/http.dart' as http;
 
 class AppSignIn extends StatefulWidget {
   @override
@@ -8,6 +10,10 @@ class AppSignIn extends StatefulWidget {
 }
 
 class _AppSignInState extends State<AppSignIn> {
+  var _email;
+  var _password;
+  final emailController = new TextEditingController();
+  final passwordController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     String defaultFontFamily = 'Roboto-Light.ttf';
@@ -47,111 +53,72 @@ class _AppSignInState extends State<AppSignIn> {
                     alignment: Alignment.center,
                     child: Image.asset("assets/images/ic_app_icon.png"),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextField(
-                    showCursor: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                      filled: true,
-                      prefixIcon: Icon(
-                        Icons.phone,
-                        color: Color(0xFF666666),
-                        size: defaultIconSize,
-                      ),
-                      fillColor: Color(0xFFF2F3F5),
-                      hintStyle: TextStyle(
-                          color: Color(0xFF666666),
-                          fontFamily: defaultFontFamily,
-                          fontSize: defaultFontSize),
-                      hintText: "Phone Number",
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextField(
-                    showCursor: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                      filled: true,
-                      prefixIcon: Icon(
-                        Icons.lock_outline,
-                        color: Color(0xFF666666),
-                        size: defaultIconSize,
-                      ),
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye,
-                        color: Color(0xFF666666),
-                        size: defaultIconSize,
-                      ),
-                      fillColor: Color(0xFFF2F3F5),
-                      hintStyle: TextStyle(
-                        color: Color(0xFF666666),
-                        fontFamily: defaultFontFamily,
-                        fontSize: defaultFontSize,
-                      ),
-                      hintText: "Password",
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: Text(
-                      "Forgot your password?",
-                      style: TextStyle(
-                        color: Color(0xFF666666),
-                        fontFamily: defaultFontFamily,
-                        fontSize: defaultFontSize,
-                        fontStyle: FontStyle.normal,
-                      ),
-                      textAlign: TextAlign.end,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: RaisedButton(
-                      padding: EdgeInsets.all(17.0),
-                      onPressed: () {},
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontFamily: 'Poppins-Medium.ttf',
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      color: Color(0xFFBC1F26),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(15.0),
-                          side: BorderSide(color: Color(0xFFBC1F26))),
-                    ),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Color(0xFFF2F3F7)),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
                 ],
+              ),
+            ),
+            Flexible(
+              flex: 5,
+              child: Container(
+                width: double.infinity,
+                child: RaisedButton(
+                  padding: EdgeInsets.all(17.0),
+                  onPressed: () {
+                    //TODO: logic for check email and password
+                    setState(() {
+                      //_email = emailController.text;
+                      //_password = passwordController.text;
+                      //print('$_email + $_password');
+                      loginWithFacebook();
+                    });
+                  },
+                  child: Text(
+                    "Sign In With Facebook",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'Poppins-Medium.ttf',
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  color: Colors.indigo,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0),
+                      side: BorderSide(color: Colors.indigo[600])),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Flexible(
+              flex: 5,
+              child: Container(
+                width: double.infinity,
+                child: RaisedButton(
+                  padding: EdgeInsets.all(17.0),
+                  onPressed: () {
+                    //TODO: logic for check email and password
+                    setState(() {
+                      //_email = emailController.text;
+                      //_password = passwordController.text;
+                      //print('$_email + $_password');
+                      loginWithGoogle();
+                    });
+                  },
+                  child: Text(
+                    "Sign In With Google",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'Poppins-Medium.ttf',
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0),
+                      side: BorderSide(color: Colors.red[600])),
+                ),
               ),
             ),
             Flexible(
@@ -195,10 +162,41 @@ class _AppSignInState extends State<AppSignIn> {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+//http://192.168.0.243:8000/api/auth/facebook
+void loginWithFacebook() {
+  String url = 'https://10.0.2.2:8080/Rentronix/public/api/auth/facebook';
+  http.post(url, body: {
+    'client_id': '1',
+    'client_secret': 'qpBx9foSSvEoPfmWrESkwRt3Z4p9LPo8KkXQOalN',
+    'user_id': '2690312317874170',
+    'access_token':
+        'EAADc1wadlV4BAOa23gAZCaKNgN1sFfNHKpCwW6XhkwvfTZAEYpPR6ZCXNYMtLYuARtcAkFO2vwiSY8h2yKsugXBBZCSQ1IfeviZChZBytYG3qKrDZAOzREoDz75G2tcWsstDT1oFxpEZCxtzKxcd7xztKyFphk935nFqoDi5oUzVg64ed16WL0Ur8rB3S5eoKpVdmLkZC6jdV5qc2gVi6wJs6L1CZBbJN9sZCx7CSBz1PXm8gZDZD'
+  }).then((response) {
+    print('code  ${response.statusCode}');
+    print('body ${response.body}');
+  });
+}
+
+void loginWithGoogle() {
+  String url = 'http://localhost/Rentronix/public/api/auth/google';
+  http.post(url, headers: {
+    'Accept': 'Application/json',
+  }, body: {
+    'client_id': '5',
+    'client_secret': 'qXK35Q3B1gUVJnKqPOiFj7R1Z4TLUpL8WZ2WEci7',
+    'user_id': '2690312317874170',
+    'access_token':
+        'EAADc1wadlV4BAOa23gAZCaKNgN1sFfNHKpCwW6XhkwvfTZAEYpPR6ZCXNYMtLYuARtcAkFO2vwiSY8h2yKsugXBBZCSQ1IfeviZChZBytYG3qKrDZAOzREoDz75G2tcWsstDT1oFxpEZCxtzKxcd7xztKyFphk935nFqoDi5oUzVg64ed16WL0Ur8rB3S5eoKpVdmLkZC6jdV5qc2gVi6wJs6L1CZBbJN9sZCx7CSBz1PXm8gZDZD'
+  }).then((response) {
+    print('code  ${response.statusCode}');
+    print('body ${response.body}');
+  });
 }

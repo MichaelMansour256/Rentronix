@@ -8,8 +8,8 @@ Widget appBarWidget(context) {
     centerTitle: true,
     title: Image.asset(
       "assets/images/ic_app_icon.png",
-      width: 80,
-      height: 40,
+      width: 100,
+      height: 100,
     ),
     actions: <Widget>[
       IconButton(
