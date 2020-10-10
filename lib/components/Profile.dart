@@ -12,6 +12,66 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            CircleAvatar(
+              backgroundColor: Colors.red,
+            ),
+            Row(
+              children: <Widget>[
+                Icon(Icons.account_balance_wallet),
+                Text('your balance'),
+              ],
+            ),
+            FlatButton(
+              onPressed: () {
+                //TODO go to screen to put the new info
+              },
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.settings),
+                  Text('Edit Your Info'),
+                ],
+              ),
+            ),
+            FlatButton(
+              onPressed: () {
+                //TODO go to screen to put the new info
+              },
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.favorite),
+                  Text('Favourite List'),
+                ],
+              ),
+            ),
+            FlatButton(
+              onPressed: () {
+                //TODO go to screen to put the new info
+              },
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.list),
+                  Text('Your Orders'),
+                ],
+              ),
+            ),
+            FlatButton(
+              onPressed: () {
+                //TODO go to screen to put the new info
+              },
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.verified_user),
+                  Text('Be A Seller'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

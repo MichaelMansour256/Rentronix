@@ -172,7 +172,7 @@ class _AppSignInState extends State<AppSignIn> {
 
 //http://192.168.0.243:8000/api/auth/facebook
 void loginWithFacebook() {
-  String url = 'https://10.0.2.2:8080/Rentronix/public/api/auth/facebook';
+  String url = 'https://10.0.2.2:8080/api/auth/facebook';
   http.post(url, body: {
     'client_id': '1',
     'client_secret': 'qpBx9foSSvEoPfmWrESkwRt3Z4p9LPo8KkXQOalN',
