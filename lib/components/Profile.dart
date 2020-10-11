@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_ecommerce_app/components/AppSingUp.dart';
+import 'package:flutter_ecommerce_app/utils/Urls.dart';
 import 'package:http/http.dart' as http;
 
 class Profile extends StatefulWidget {
@@ -19,6 +20,7 @@ class _ProfileState extends State<Profile> {
             CircleAvatar(
               backgroundColor: Colors.red,
             ),
+            Text('Your Name'),
             Row(
               children: <Widget>[
                 Icon(Icons.account_balance_wallet),

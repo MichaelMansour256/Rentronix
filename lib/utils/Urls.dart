@@ -1,3 +1,5 @@
 class Urls {
-  static const ROOT_URL = "https://10.0.2.2:8080/api";
+  static const ROOT_URL = "http://192.168.56.1:8888/Rentronix/public/api";
+  //http://192.168.0.243:8000
+  //https://10.0.2.2:8080
 }

@@ -57,9 +57,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
 
 Widget _createDrawerHeader() {
   return DrawerHeader(
-      margin: EdgeInsets.zero,
-      padding: EdgeInsets.zero,
-      child: Stack(children: <Widget>[
+    margin: EdgeInsets.zero,
+    padding: EdgeInsets.zero,
+    child: Stack(
+      children: <Widget>[
         Container(
           padding: EdgeInsets.all(20),
           child: Center(
@@ -70,15 +71,9 @@ Widget _createDrawerHeader() {
             ),
           ),
         ),
-        Positioned(
-            bottom: 12.0,
-            left: 16.0,
-            child: Text("Developed for learing purpose by 'TARIKUL'",
-                style: TextStyle(
-                    color: Color(0xFF545454),
-                    fontSize: 10.0,
-                    fontWeight: FontWeight.w500))),
-      ]));
+      ],
+    ),
+  );
 }
 
 Widget _createDrawerItem(
