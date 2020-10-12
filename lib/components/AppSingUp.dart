@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/components/AppSignIn.dart';
+import 'dart:convert';
+import 'package:flutter_ecommerce_app/Api/LoginApi.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_ecommerce_app/components/AppSingUp.dart';
+import 'package:flutter_ecommerce_app/utils/Urls.dart';
+import 'package:http/http.dart' as http;
 
 class AppSingUp extends StatelessWidget {
   @override
@@ -23,11 +31,9 @@ class AppSingUp extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Icon(Icons.close),
-
                   ),
-
                 ),
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
               ),
@@ -43,172 +49,60 @@ class AppSingUp extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Image.asset("assets/images/ic_app_icon.png"),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Flexible(
-                        flex: 1,
-                        child: TextField(
-                          showCursor: true,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(
-                                width: 0,
-                                style: BorderStyle.none,
-                              ),
-                            ),
-                            filled: true,
-                            fillColor: Color(0xFFF2F3F5),
-                            hintStyle: TextStyle(
-                              color: Color(0xFF666666),
-                              fontFamily: defaultFontFamily,
-                              fontSize: defaultFontSize,
-                            ),
-                            hintText: "First Name",
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: TextField(
-                          showCursor: true,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(
-                                width: 0,
-                                style: BorderStyle.none,
-                              ),
-                            ),
-                            filled: true,
-                            fillColor: Color(0xFFF2F3F5),
-                            hintStyle: TextStyle(
-                              color: Color(0xFF666666),
-                              fontFamily: defaultFontFamily,
-                              fontSize: defaultFontSize,
-                            ),
-                            hintText: "Last Name",
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextField(
-                    showCursor: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                      filled: true,
-                      prefixIcon: Icon(
-                        Icons.phone,
-                        color: Color(0xFF666666),
-                        size: defaultIconSize,
-                      ),
-                      fillColor: Color(0xFFF2F3F5),
-                      hintStyle: TextStyle(
-                          color: Color(0xFF666666),
-                          fontFamily: defaultFontFamily,
-                          fontSize: defaultFontSize),
-                      hintText: "Phone Number",
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextField(
-                    showCursor: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                      filled: true,
-                      prefixIcon: Icon(
-                        Icons.code,
-                        color: Color(0xFF666666),
-                        size: defaultIconSize,
-                      ),
-                      fillColor: Color(0xFFF2F3F5),
-                      hintStyle: TextStyle(
-                        color: Color(0xFF666666),
-                        fontFamily: defaultFontFamily,
-                        fontSize: defaultFontSize,
-                      ),
-                      hintText: "Invitation Code",
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                      width: double.infinity,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.info_outline,
-                            color: Color(0xFF666666),
-                            size: defaultIconSize,
-                          ),
-                          Text(
-                            " Leave empty if you don't have Invitation Code",
-                            style: TextStyle(
-                              color: Color(0xFF666666),
-                              fontFamily: defaultFontFamily,
-                              fontSize: defaultFontSize,
-                              fontStyle: FontStyle.normal,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
-                      )),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: RaisedButton(
-                      padding: EdgeInsets.all(17.0),
-                      onPressed: () {},
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontFamily: 'Poppins-Medium.ttf',
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      color: Color(0xFFBC1F26),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(15.0),
-                          side: BorderSide(color: Color(0xFFBC1F26))),
-                    ),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Color(0xFFF2F3F7)),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
                 ],
+              ),
+            ),
+            Flexible(
+              flex: 5,
+              child: Container(
+                width: double.infinity,
+                child: RaisedButton(
+                  padding: EdgeInsets.all(17.0),
+                  onPressed: () {
+                    //TODO: logic for check email and password
+                  },
+                  child: Text(
+                    "SignUp With Facebook",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'Poppins-Medium.ttf',
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  color: Colors.indigo,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0),
+                      side: BorderSide(color: Colors.indigo[600])),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Flexible(
+              flex: 5,
+              child: Container(
+                width: double.infinity,
+                child: RaisedButton(
+                  padding: EdgeInsets.all(17.0),
+                  onPressed: () {
+                    //TODO: logic for check email and password
+                  },
+                  child: Text(
+                    "SignUp With Google",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'Poppins-Medium.ttf',
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0),
+                      side: BorderSide(color: Colors.red[600])),
+                ),
               ),
             ),
             Flexible(
@@ -221,7 +115,7 @@ class AppSingUp extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       child: Text(
-                        "Already have an account? ",
+                        "Do you have account ? ",
                         style: TextStyle(
                           color: Color(0xFF666666),
                           fontFamily: defaultFontFamily,
@@ -231,11 +125,11 @@ class AppSingUp extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {
+                      onTap: () => {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AppSignIn()),
-                        );
+                          MaterialPageRoute(builder: (context) => AppSingUp()),
+                        )
                       },
                       child: Container(
                         child: Text(
@@ -252,7 +146,7 @@ class AppSingUp extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

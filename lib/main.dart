@@ -5,6 +5,7 @@ import 'package:flutter_ecommerce_app/common_widget/BottomNavBarWidget.dart';
 import 'package:flutter_ecommerce_app/common_widget/DrawerWidget.dart';
 import 'package:flutter_ecommerce_app/screens/HomeScreen.dart';
 import 'package:flutter_ecommerce_app/screens/ProductDetailScreen.dart';
+import 'package:flutter_ecommerce_app/screens/Profile.dart';
 import 'package:flutter_ecommerce_app/screens/ShoppingCartScreen.dart';
 import 'package:flutter_ecommerce_app/screens/WishListScreen.dart';
 import 'package:flutter_ecommerce_app/components/AppSignIn.dart';

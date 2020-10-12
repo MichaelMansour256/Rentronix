@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/main.dart';
+import 'package:flutter_ecommerce_app/screens/Profile.dart';
 import 'package:flutter_ecommerce_app/screens/WishListScreen.dart';
 import 'package:flutter_ecommerce_app/components/AppSignIn.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,12 +42,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       MaterialPageRoute(builder: (context) => WishListScreen()),
                     )),
             _createDrawerItem(
-                icon: Icons.call,
-                text: 'Contact Us',
+                icon: Icons.person,
+                text: 'Profile',
                 onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => EmptyWishListScreen()),
+                      MaterialPageRoute(builder: (context) => Profile()),
                     )),
           ],
         ),
