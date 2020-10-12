@@ -4,6 +4,7 @@ import 'package:flutter_ecommerce_app/screens/Profile.dart';
 import 'package:flutter_ecommerce_app/screens/WishListScreen.dart';
 import 'package:flutter_ecommerce_app/components/AppSignIn.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_ecommerce_app/screens/FavouriteScreen.dart';
 
 class DrawerWidget extends StatefulWidget {
   @override
@@ -39,7 +40,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 text: 'Wish List',
                 onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => WishListScreen()),
+                      MaterialPageRoute(builder: (context) => FavListState()),
                     )),
             _createDrawerItem(
                 icon: Icons.person,

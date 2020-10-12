@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/Api/FavListApi.dart';
+
+FavListApi fav = FavListApi();
 
 class WishListScreen extends StatefulWidget {
   @override
@@ -15,11 +18,15 @@ class _WishListScreenState extends State<WishListScreen> {
 
 class EmptyWishListScreen extends StatefulWidget {
   @override
-  _EmptyWishListScreenState createState() =>
-      _EmptyWishListScreenState();
+  _EmptyWishListScreenState createState() => _EmptyWishListScreenState();
 }
 
 class _EmptyWishListScreenState extends State<EmptyWishListScreen> {
+  List<Map<String, String>> s = [];
+  void getData() {
+    s = fav.getFav();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
