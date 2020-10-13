@@ -46,7 +46,7 @@ class _MyHomePageNewState extends State<MyHomePage> {
     ShoppingCartScreen(),
     HomeScreen()
   ];
-
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -55,10 +55,50 @@ class _MyHomePageNewState extends State<MyHomePage> {
         appBar: appBarWidget(context),
         drawer: DrawerWidget(),
         body: IndexedStack(
-          index: currentIndex,
+          index: _selectedIndex,
           children: viewContainer,
         ),
-        bottomNavigationBar: BottomNavBarWidget(),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text(
+                'Home',
+                style: TextStyle(color: Color(0xFF545454)),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.heart),
+              title: Text(
+                'Wish List',
+                style: TextStyle(color: Color(0xFF545454)),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.shoppingBag),
+              title: Text(
+                'Cart',
+                style: TextStyle(color: Color(0xFF545454)),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.dashboard),
+              title: Text(
+                'Dashboard',
+                style: TextStyle(color: Color(0xFF545454)),
+              ),
+            ),
+          ],
+          selectedItemColor: Color(0xFFAA292E),
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+              navigateToScreens(index);
+            });
+          },
+        ),
       ),
     );
   }

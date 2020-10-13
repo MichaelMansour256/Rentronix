@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_ecommerce_app/Api/LoginApi.dart';
 import 'package:flutter_ecommerce_app/Api/ProfileApi.dart';
 import 'package:flutter_ecommerce_app/components/AppSingUp.dart';
+import 'package:flutter_ecommerce_app/screens/OrdersScreen.dart';
 import 'package:flutter_ecommerce_app/screens/WishListScreen.dart';
 import 'package:flutter_ecommerce_app/utils/Urls.dart';
 import 'package:http/http.dart' as http;
@@ -83,9 +84,10 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               FlatButton(
-                onPressed: () {
-                  //TODO go to screen to put the new info
-                },
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Orders()),
+                ),
                 child: Card(
                   color: Colors.white,
                   margin:

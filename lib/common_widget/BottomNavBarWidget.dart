@@ -8,18 +8,18 @@ class BottomNavBarWidget extends StatefulWidget {
 }
 
 class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
-    void _onItemTapped(int index) {
+    /* void _onItemTapped(int index) {
       setState(() {
         _selectedIndex = index;
         navigateToScreens(index);
       });
-
-    }
+    }*/
 
     return BottomNavigationBar(
+      currentIndex: _selectedIndex,
       type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -44,16 +44,20 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
           ),
         ),
         BottomNavigationBarItem(
-          icon: Icon(FontAwesomeIcons.dashcube),
+          icon: Icon(Icons.dashboard),
           title: Text(
             'Dashboard',
             style: TextStyle(color: Color(0xFF545454)),
           ),
         ),
       ],
-      currentIndex: _selectedIndex,
       selectedItemColor: Color(0xFFAA292E),
-      onTap: _onItemTapped,
+      onTap: (index) {
+        setState(() {
+          _selectedIndex = index;
+          navigateToScreens(index);
+        });
+      },
     );
   }
 }
