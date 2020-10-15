@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/Api/FavListApi.dart';
 import 'package:flutter_ecommerce_app/common_widget/AppBarWidget.dart';
+import 'package:flutter_ecommerce_app/Api/OrdersApi.dart';
 
 FavListApi fav = FavListApi();
+OrdersApi orders = OrdersApi();
 
 class Orders extends StatefulWidget {
   @override
@@ -12,6 +14,7 @@ class Orders extends StatefulWidget {
 
 class _OrdersState extends State<Orders> {
   List<Map<String, String>> s = fav.getFav();
+  List<Map<String, String>> o = orders.getOrdersFake();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +27,10 @@ class _OrdersState extends State<Orders> {
                 onTap: () {
                   //TODO : redirect to this product page
                 },
-                title: Text(s[index]['name']),
-                subtitle: Text(s[index]['price']),
-                leading: Icon(
-                  Icons.favorite_border,
+                title: Text(o[index]['name']),
+                subtitle: Text(o[index]['status']),
+                leading: CircleAvatar(
+                  backgroundColor: Colors.red[700],
                 ),
               ),
             );
