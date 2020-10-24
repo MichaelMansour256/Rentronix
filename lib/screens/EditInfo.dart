@@ -22,6 +22,7 @@ class _editYourInfoState extends State<editYourInfo> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red[700],
+	title: Text('Edit Personal Info'),
         ),
         body: Center(
           child: SingleChildScrollView(

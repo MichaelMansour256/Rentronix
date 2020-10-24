@@ -23,6 +23,7 @@ class _beASellerState extends State<beASeller> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red[700],
+	title: Text('Request To Be A Seller'),
         ),
         body: Center(
           child: SingleChildScrollView(
