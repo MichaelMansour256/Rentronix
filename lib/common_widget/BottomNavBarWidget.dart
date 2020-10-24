@@ -44,9 +44,9 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
           ),
         ),
         BottomNavigationBarItem(
-          icon: Icon(FontAwesomeIcons.dashcube),
+          icon: Icon(FontAwesomeIcons.search),
           title: Text(
-            'Dashboard',
+            'Search',
             style: TextStyle(color: Color(0xFF545454)),
           ),
         ),

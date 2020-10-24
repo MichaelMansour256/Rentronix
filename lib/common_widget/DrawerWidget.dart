@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/components/Profile.dart';
+import 'package:flutter_ecommerce_app/e_commerce_screens/user_profile.dart';
 import 'package:flutter_ecommerce_app/main.dart';
 import 'package:flutter_ecommerce_app/screens/WishListScreen.dart';
 import 'package:flutter_ecommerce_app/components/AppSignIn.dart';
@@ -20,19 +22,20 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           children: <Widget>[
             _createDrawerHeader(),
             _createDrawerItem(
+                icon: Icons.person,
+                text: 'Profile',
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserProfile()),
+                )),
+            _createDrawerItem(
                 icon: Icons.home,
                 text: 'Home',
                 onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => MyHomePage()),
                     )),
-            _createDrawerItem(
-                icon: FontAwesomeIcons.user,
-                text: 'Sign In',
-                onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AppSignIn()),
-                    )),
+
             _createDrawerItem(
                 icon: Icons.favorite_border,
                 text: 'Wish List',
@@ -47,7 +50,16 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => EmptyWishListScreen()),
+
                     )),
+            _createDrawerItem(
+                icon: FontAwesomeIcons.user,
+                text: 'Log out',
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AppSignIn()),
+                )),
+
           ],
         ),
       ),
@@ -70,14 +82,7 @@ Widget _createDrawerHeader() {
             ),
           ),
         ),
-        Positioned(
-            bottom: 12.0,
-            left: 16.0,
-            child: Text("Developed for learing purpose by 'TARIKUL'",
-                style: TextStyle(
-                    color: Color(0xFF545454),
-                    fontSize: 10.0,
-                    fontWeight: FontWeight.w500))),
+
       ]));
 }
 

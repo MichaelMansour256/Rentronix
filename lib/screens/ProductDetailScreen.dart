@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/common_widget/AppBarWidget.dart';
 import 'package:flutter_ecommerce_app/common_widget/CircularProgress.dart';
+import 'package:flutter_ecommerce_app/e_commerce_screens/rating_comments_screen.dart';
 import 'package:flutter_ecommerce_app/models/ProductDetails.dart';
 import 'package:flutter_ecommerce_app/utils/Urls.dart';
 import 'package:http/http.dart';
@@ -78,25 +79,7 @@ class BottomNavBar extends StatelessWidget {
                       color: Color(0xFFff665e))),
             ),
           ),
-          RaisedButton(
-            elevation: 0,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    bottomRight: Radius.circular(10)),
-                side: BorderSide(color: Color(0xFFff665e))),
-            onPressed: () {},
-            color: Color(0xFFff665e),
-            textColor: Colors.white,
-            child: Container(
-              padding: EdgeInsets.only(left: 5, right: 5, top: 15, bottom: 15),
-              child: Text("available at shops".toUpperCase(),
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFFFFFFF))),
-            ),
-          ),
+
         ],
       ),
     );
@@ -148,16 +131,36 @@ class _DetailScreenState extends State<DetailScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("SKU".toUpperCase(),
+                Text("Name".toUpperCase(),
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF565656))),
-                Text(widget.productDetails.data.productVariants[0].sku,
+                Text('Product Name ',
+                    style: TextStyle(
+                        color: (widget.productDetails.data.productVariants[0]
+                            .maxPrice !=
+                            null)
+                            ? Color(0xFFf67426)
+                            : Color(0xFF0dc2cd),
+                        fontFamily: 'Roboto-Light.ttf',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500)),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 20),
+            color: Color(0xFFFFFFFF),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Datasheet",
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFFfd0100))),
+                        color: Color(0xFF565656))),
+
                 Icon(
                   Icons.arrow_forward_ios,
                   color: Color(0xFF999999),
@@ -174,18 +177,44 @@ class _DetailScreenState extends State<DetailScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Price".toUpperCase(),
+                Text("Selling Price".toUpperCase(),
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF565656))),
                 Text(
-                    "৳ ${(widget.productDetails.data.productVariants[0].maxPrice != null) ? widget.productDetails.data.productVariants[0].maxPrice : "Unavailable"}"
+                    " ${(widget.productDetails.data.productVariants[0].maxPrice != null) ? widget.productDetails.data.productVariants[0].maxPrice : "Unavailable"}"
                         .toUpperCase(),
                     style: TextStyle(
                         color: (widget.productDetails.data.productVariants[0]
                                     .maxPrice !=
                                 null)
+                            ? Color(0xFFf67426)
+                            : Color(0xFF0dc2cd),
+                        fontFamily: 'Roboto-Light.ttf',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500)),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 20),
+            color: Color(0xFFFFFFFF),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Renting Price".toUpperCase(),
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF565656))),
+                Text(
+                    " ${(widget.productDetails.data.productVariants[0].maxPrice != null) ? widget.productDetails.data.productVariants[0].maxPrice : "Unavailable"}"
+                        .toUpperCase(),
+                    style: TextStyle(
+                        color: (widget.productDetails.data.productVariants[0]
+                            .maxPrice !=
+                            null)
                             ? Color(0xFFf67426)
                             : Color(0xFF0dc2cd),
                         fontFamily: 'Roboto-Light.ttf',
@@ -205,7 +234,34 @@ class _DetailScreenState extends State<DetailScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text("Description",
+                Text("Model Description",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF565656))),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                    "${widget.productDetails.data.productVariants[0].productDescription}",
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF4c4c4c))),
+              ],
+            ),
+          ),
+          Container(
+            alignment: Alignment.topLeft,
+            width: double.infinity,
+            padding: EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 20),
+            color: Color(0xFFFFFFFF),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text("Project OverView",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontSize: 16,
@@ -228,29 +284,61 @@ class _DetailScreenState extends State<DetailScreen> {
             height: 10,
           ),
           Container(
-            alignment: Alignment.topLeft,
-            width: double.infinity,
             padding: EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 20),
             color: Color(0xFFFFFFFF),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Specification",
-                    textAlign: TextAlign.left,
+                Text("Quantity ".toUpperCase(),
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF565656))),
-                SizedBox(
-                  height: 15,
-                ),
-                Column(
-                  children: generateProductSpecification(context),
-                )
+                Text(
+                    '250',
+                    style: TextStyle(
+                        color: (widget.productDetails.data.productVariants[0]
+                            .maxPrice !=
+                            null)
+                            ? Color(0xFFf67426)
+                            : Color(0xFF0dc2cd),
+                        fontFamily: 'Roboto-Light.ttf',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500)),
               ],
             ),
-          )
+          ),
+
+          Container(
+            padding: EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 20),
+            color: Color(0xFFFFFFFF),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Comments & Ratings".toUpperCase(),
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.red)),
+
+
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RatingPage()),
+                    );
+                  },
+                  icon: Icon(
+                      Icons.arrow_forward_ios),
+                  color: Colors.black,
+                ),
+
+              ],
+            ),
+          ),
         ],
+
       ),
     );
   }

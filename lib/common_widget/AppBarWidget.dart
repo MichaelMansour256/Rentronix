@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/components/AppSignIn.dart';
+import 'package:flutter_ecommerce_app/e_commerce_screens/iam_seller_screen.dart';
+import 'package:flutter_ecommerce_app/e_commerce_screens/user_profile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Widget appBarWidget(context) {
@@ -16,7 +18,7 @@ Widget appBarWidget(context) {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AppSignIn()),
+            MaterialPageRoute(builder: (context) => UserProfile()),
           );
         },
         icon: Icon(FontAwesomeIcons.user),

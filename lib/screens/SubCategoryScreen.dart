@@ -78,7 +78,7 @@ class SubCategoryScreen extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavBarWidget(),
+        //bottomNavigationBar: BottomNavBarWidget(),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/e_commerce_screens/checkout_screen.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
   @override
@@ -9,7 +10,12 @@ class ShoppingCartScreen extends StatefulWidget {
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   @override
   Widget build(BuildContext context) {
-    return EmptyShoppingCartScreen();
+
+
+
+    return Checkout();
+
+      //EmptyShoppingCartScreen();
   }
 }
 

@@ -10,7 +10,14 @@ import 'package:flutter_ecommerce_app/screens/WishListScreen.dart';
 import 'package:flutter_ecommerce_app/components/AppSignIn.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'components/Profile.dart';
+import 'e_commerce_screens/addProduct_screen.dart';
+import 'e_commerce_screens/rating_comments_screen.dart';
+import 'e_commerce_screens/search_screen.dart';
+import 'e_commerce_screens/user_profile.dart';
+
 void main() => runApp(MyApp());
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -39,27 +46,69 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageNewState extends State<MyHomePage> {
+  var index = 0;
   final List<Widget> viewContainer = [
     HomeScreen(),
     WishListScreen(),
     ShoppingCartScreen(),
-    HomeScreen()
+   SearchScreen(),
+
   ];
 
   @override
   Widget build(BuildContext context) {
+
     return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: appBarWidget(context),
-        drawer: DrawerWidget(),
-        body: IndexedStack(
-          index: currentIndex,
-          children: viewContainer,
-        ),
-        bottomNavigationBar: BottomNavBarWidget(),
-      ),
-    );
+        length: 3,
+        child: Scaffold(
+          appBar: appBarWidget(context),
+          drawer: DrawerWidget(),
+          body: viewContainer[index],
+
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.grey[300],
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.red,
+            unselectedItemColor: Colors.grey,
+            showUnselectedLabels: true,
+            currentIndex: index,
+            onTap: (int i) {
+              setState(() {
+                index = i;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                title: Text(
+                  'Home',
+                  style: TextStyle(color: Color(0xFF545454)),
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.heart),
+                title: Text(
+                  'Wish List',
+                  style: TextStyle(color: Color(0xFF545454)),
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.shoppingBag),
+                title: Text(
+                  'Cart',
+                  style: TextStyle(color: Color(0xFF545454)),
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.search),
+                title: Text(
+                  'Search',
+                  style: TextStyle(color: Color(0xFF545454)),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
 

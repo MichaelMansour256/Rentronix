@@ -5,6 +5,8 @@ import 'package:flutter_ecommerce_app/common_widget/PopularMenu.dart';
 import 'package:flutter_ecommerce_app/common_widget/SearchWidget.dart';
 import 'package:flutter_ecommerce_app/common_widget/TopPromoSlider.dart';
 import 'package:flutter_ecommerce_app/components/ShopHomePage.dart';
+import 'package:flutter_ecommerce_app/e_commerce_screens/addProduct_screen.dart';
+import 'package:flutter_ecommerce_app/e_commerce_screens/repair_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -19,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: <Widget>[
           SearchWidget(),
           TopPromoSlider(),
-          PopularMenu(),
+          //PopularMenu(),
           SizedBox(
             height: 10,
             child: Container(
@@ -35,10 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   text: 'Categories',
                 ),
                 Tab(
-                  text: 'Brands',
+                  text: 'Manufactures',
                 ),
                 Tab(
-                  text: 'Shops',
+                  text: 'Repair',
                 )
               ], // list of tabs
             ),
@@ -56,15 +58,32 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.white24,
                   child: CategoryPage(slug: 'categories/'),
                 ),
-                Container(
+               Container(
                   color: Colors.white24,
                   child: BrandHomePage(slug: 'brands/?limit=20&page=1'),
                 ),
                 Container(
                   color: Colors.white24,
-                  child: ShopHomePage(
-                    slug: 'custom/shops/?page=1&limit=15',
+                  child:
+                  FlatButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RepairScreen()),
+                    ),
+                    child: Card(
+                      color: Colors.red,
+                      margin:
+                      EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
+                      child: ListTile(
+                        leading: Icon(Icons.auto_fix_off),
+                        title: Text("Create your Repair Request to the Admin "),
+                      ),
+                    ),
                   ),
+                  //child: RepairForm()-------> should be created
+                 /*child: ShopHomePage(
+                    slug: 'custom/shops/?page=1&limit=15',
+                  ),*/
                 ) // class name
               ],
             ),
